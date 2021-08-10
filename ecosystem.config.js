@@ -1,22 +1,25 @@
 module.exports = {
     apps: [{
-        name: "signaller",
-        script: 'signaller.js',
+        name: "webrtcsignaller",
+        script: 'webrtcsignaller.js',
         env: {
-            NODE_ENV: "development",
+            NODE_ENV: "prod",
         },
-        env_production: {
-            NODE_ENV: "production",
+        env_prod: {
+            NODE_ENV: "prod",
+        },
+        env_dev: {
+            "NODE_ENV": "dev"
         },
         watch: true,
         exec_mode: "cluster",
         instances: 1,
         args: "--ssl --port=8085"
-    },
-        {
-            script: './service-worker/',
-            watch: ['./service-worker']
-        }
+    }
+        // {
+        //   script: './service-worker/',
+        //   watch: ['./service-worker']
+        // }
     ],
 
     deploy: {
@@ -25,7 +28,7 @@ module.exports = {
             host: 'SSH_HOSTMACHINE',
             ref: 'origin/master',
             repo: ' git@github.com:altanai/webrtcsignaller.git',
-            path: '/home/ubuntu/webrtcsignaller',
+            path: 'DESTINATION_PATH',
             'pre-deploy-local': '',
             'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production',
             'pre-setup': ''

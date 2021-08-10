@@ -4,15 +4,11 @@
   "homePage": "/demos/index.html",
   "socketMessageEvent": "RTCMultiConnection-Message",
   "socketCustomEvent": "RTCMultiConnection-Custom-Message",
-  "httpsport": 8085,
-  "http2port": 8086,
+  "port": "8085",
   "enableLogs": "true",
   "autoRebootServerOnFailure": "true",
-  "isUseHTTPs": "true",
-  "sslKey": "ssl_certs/server.key",
-  "sslCert": "ssl_certs/server.crt",
-  "sslCabundle": "ssl_certs/ca.crt",
-  "enableAdmin": "true",
+  "isUseHTTPs": "false",
+  "enableAdmin": "false",
   "adminUserName": "username",
   "adminPassword": "password"
 }
