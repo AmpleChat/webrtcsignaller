@@ -8,11 +8,11 @@
   "http2port": 8086,
   "enableLogs": "true",
   "autoRebootServerOnFailure": "true",
-  "isUseHTTPs": "true",
-  "sslKey": "ssl_certs/server.key",
-  "sslCert": "ssl_certs/server.crt",
-  "sslCabundle": "ssl_certs/ca.crt",
-  "enableAdmin": "true",
+  "isUseHTTPs": "false",
+  "sslKey": "../wildcard_sslcerts_2020/bc3.key",
+  "sslCert": "../wildcard_sslcerts_2020/62e2008550985efe.crt",
+  "sslCabundle": "../wildcard_sslcerts_2020/sf_bundle-g2-g1.crt",
+  "enableAdmin": "false",
   "adminUserName": "username",
   "adminPassword": "password"
 }

@@ -455,7 +455,7 @@ module.exports = exports = function (socket, config) {
                 var room = listOfRooms[user.roomid];
                 if (!room) {
                     console.warn("close-entire-session -  room not present in list of rooms ");
-                    return callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE);
+                    return callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE_TOCLOSE) ;
                 }
 
                 if (room.owner !== user.userid) return callback(false, CONST_STRINGS.ROOM_PERMISSION_DENIED);
@@ -831,8 +831,9 @@ module.exports = exports = function (socket, config) {
                 closeOrShiftRoom();
 
                 if (listOfRooms[arg.sessionid] && listOfRooms[arg.sessionid].participants.length) {
-                    console.warn("open-room -  cannnot open room ",arg.sessionid,"as its already open with peers ",  listOfRooms[arg.sessionid].participants.length);
-                    callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE);
+                    console.warn("open-room -  cannot open room ", arg.sessionid, " as its already open with peers ", listOfRooms[arg.sessionid].participants.length);
+                    // callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE_TOOPEN_ALREADYOPEN);
+                    callback(true, CONST_STRINGS.ROOM_NOT_AVAILABLE_TOOPEN_ALREADYOPEN);
                     return;
                 }
 
@@ -948,8 +949,8 @@ module.exports = exports = function (socket, config) {
 
             try {
                 if (!listOfRooms[arg.sessionid]) {
-                    console.warn("[join-room'] room not present to join - ", arg.sessionid)
-                    callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE);
+                    console.warn("[join-room'] room not present to join - ", arg.sessionid);
+                    callback(false, CONST_STRINGS.ROOM_NOT_AVAILABLE_TOJOIN);
                     return;
                 }
             } catch (e) {
