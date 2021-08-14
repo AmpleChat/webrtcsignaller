@@ -48,35 +48,35 @@ function getValuesFromConfigJson(param) {
         console.log("read from external config ", param.config, config);
     }
 
-    // ['sslKey', 'sslCert', 'sslCabundle'].forEach(function (key) {
-    //     if (!config[key] || config[key].toString().length == 0) {
-    //         return;
-    //     }
-    //
-    //     if (config[key].indexOf('/path/to/') === -1) {
-    //         if (key === 'sslKey') result.sslKey = config.sslKey;
-    //
-    //         if (key === 'sslCert') result.sslCert = config.sslCert;
-    //
-    //         if (key === 'sslCabundle') result.sslCabundle = config.sslCabundle;
-    //     }
-    // });
-    //
-    // if ((config.port || '').toString() !== '9001') {
-    //     result.port = (config.port || '').toString();
-    // }
+    ['sslKey', 'sslCert', 'sslCabundle'].forEach(function (key) {
+        if (!config[key] || config[key].toString().length == 0) {
+            return;
+        }
+
+        if (config[key].indexOf('/path/to/') === -1) {
+            if (key === 'sslKey') result.sslKey = config.sslKey;
+
+            if (key === 'sslCert') result.sslCert = config.sslCert;
+
+            if (key === 'sslCabundle') result.sslCabundle = config.sslCabundle;
+        }
+    });
+
+    if ((config.port || '').toString() !== '9001') {
+        result.port = (config.port || '').toString();
+    }
 
     if ((config.autoRebootServerOnFailure || '').toString() === 'true') {
         result.autoRebootServerOnFailure = true;
     }
 
-    // if ((config.isUseHTTPs || '').toString() === 'true') {
-    //     result.isUseHTTPs = true;
-    // }
-    //
-    // if ((config.enableLogs || '').toString() === 'true') {
-    //     result.enableLogs = true;
-    // }
+    if ((config.isUseHTTPs || '').toString() === 'true') {
+        result.isUseHTTPs = true;
+    }
+
+    if ((config.enableLogs || '').toString() === 'true') {
+        result.enableLogs = true;
+    }
 
     if ((config.socketURL || '').toString().length) {
         result.socketURL = (config.socketURL || '').toString();
