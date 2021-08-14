@@ -114,6 +114,7 @@ function getValuesFromConfigJson(param) {
 }
 
 var config;
+
 function serverHandler(request, response) {
     // to make sure we always get valid info from json file
     // even if external codes are overriding it
