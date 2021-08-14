@@ -19,16 +19,17 @@ npm cache verify
 rm /home/ubuntu/.npm/_logs/*
 echo "----done------"
 
-pm2 stop webrtcsignaller
-pm2 delete webrtcsignaller
-if [[ "$HOSTNAME" == "ip-172-31-9-100" ]]
-then
-    printf '%s\n' "on prod"
+echo "hostname $HOSTNAME"
+if [ "$HOSTNAME" = "ip-172-31-5-226" ]; then
+    printf '%s\n' "on the hehllo"
+    export NODE_ENV="hehllo"
+    pm2 start ecosystem.config.js --env hehllo
+elif [ "$HOSTNAME" = "ip-172-31-9-100" ]; then
+    printf '%s\n' "on the brightchats prod"
     export NODE_ENV="prod"
     pm2 start ecosystem.config.js --env prod
-elif [[ "$HOSTNAME" == "ip-172-31-21-121" ]]
-then
-    printf '%s\n' "on dev "
+elif [ "$HOSTNAME" = "ip-172-31-21-121" ]; then
+    printf '%s\n' "on the brightchats dev "
     export NODE_ENV="dev"
     pm2 start ecosystem.config.js --env dev
 else
@@ -36,7 +37,6 @@ else
     export NODE_ENV="test"
     pm2 start ecosystem.config.js --env test
 fi
-
 
 echo "----server started------"
 #netstat -anp
