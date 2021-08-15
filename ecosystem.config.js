@@ -2,25 +2,26 @@ module.exports = {
     apps: [{
         name: "webrtcsignaller",
         script: 'webrtcsignaller.js',
+        watch: true,
+        exec_mode: "cluster",
+        instances: 1,
+        args: "--ssl --port=8085",
         env: {
-            NODE_ENV: "prod",
+            "NODE_ENV": "prod"
         },
         env_prod: {
-            NODE_ENV: "prod",
+            "NODE_ENV": "prod"
+        },
+        env_hehllo: {
+            "NODE_ENV": "hehllo"
         },
         env_dev: {
             "NODE_ENV": "dev"
         },
-        watch: true,
-        exec_mode: "cluster",
-        instances: 1,
-        args: "--ssl --port=8085"
-    }
-        // {
-        //   script: './service-worker/',
-        //   watch: ['./service-worker']
-        // }
-    ],
+        env_test : {
+            "NODE_ENV": "test"
+        }
+    }],
 
     deploy: {
         production: {
