@@ -6,10 +6,8 @@ var httpServer = require('https');
 const ioServer = require('socket.io');
 const rtcserver = require('./node_scripts/index.js');
 
-
 require('dotenv').config({path: `.env.${process.env.NODE_ENV}`});
 console.log('ENV file .env.' + process.env.NODE_ENV);
-
 
 const jsonPath = {
     config: 'config.json',

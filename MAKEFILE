@@ -23,19 +23,19 @@ echo "$(hostname)"
 if [ "$(hostname)" = "ip-172-31-5-226" ]; then
     printf '%s\n' "on the hehllo"
     export NODE_ENV="hehllo"
-    pm2 start ecosystem.config.js --env hehllo
+    pm2 start ecosystem.config.js --env hehllo ---timestamp
 elif [ "$(hostname)" = "ip-172-31-9-100" ]; then
     printf '%s\n' "on the brightchats prod"
     export NODE_ENV="prod"
-    pm2 start ecosystem.config.js --env prod
+    pm2 start ecosystem.config.js --env prod --timestamp
 elif [ "$(hostname)" = "ip-172-31-21-121" ]; then
     printf '%s\n' "on the brightchats dev "
     export NODE_ENV="dev"
-    pm2 start ecosystem.config.js --env dev
+    pm2 start ecosystem.config.js --env dev --timestamp
 else
     printf '%s\n' "on other test host"
     export NODE_ENV="test"
-    pm2 start ecosystem.config.js --env test
+    pm2 start ecosystem.config.js --env test --timestamp
 fi
 
 echo "----server started------"
